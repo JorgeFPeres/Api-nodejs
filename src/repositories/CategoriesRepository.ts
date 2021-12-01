@@ -23,6 +23,17 @@ class CategoriesRepository {
 
     this.categories.push(category)
   }
+
+  list(): Category[] {
+    return this.categories
+  }
+
+  findByName(name: string): Category {
+    const categoryName = this.categories.find(
+      (category) => category.name === name
+    )
+    return categoryName
+  }
 }
 
 export { CategoriesRepository }
