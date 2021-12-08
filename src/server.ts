@@ -1,4 +1,6 @@
+import "reflect-metadata"
 import express from "express"
+import "./shared/container"
 import swaggerUI from "swagger-ui-express"
 import { router } from "./routes"
 import swaggerFile from "./swagger.json"
