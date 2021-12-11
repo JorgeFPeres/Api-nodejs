@@ -1,10 +1,10 @@
 import { getRepository, Repository } from "typeorm"
 import { v4 as uuidv4 } from "uuid"
-import { Category } from "../../entities/Category"
+import { Category } from "../entities/Category"
 import {
   ICategoriesRepository,
   ICreateCategoryDTO,
-} from "../ICategoriesRepository"
+} from "../../../repositories/ICategoriesRepository"
 
 class CategoriesRepository implements ICategoriesRepository {
   private repository: Repository<Category>
