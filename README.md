@@ -1,11 +1,11 @@
 # Cadastro de carro
 
 **Requisitos Funcionais**
-Deve ser possível cadastrar um novo carro.
+Deve ser possível cadastrar um novo carro. 🚀
 
 **Regra de Negócio**  
-Não deve ser possível cadastrar um carro com uma placa já existente.
-O carro deve ser cadastrado, por padrao, com disponibilidade.
+Não deve ser possível cadastrar um carro com uma placa já existente. 🚀
+O carro deve ser cadastrado, por padrao, com disponibilidade. 🚀
 Só deve ser possível cadastrar um carro com um usuário administrador.
 
 # Listagem de carros
