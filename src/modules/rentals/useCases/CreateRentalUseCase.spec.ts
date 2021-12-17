@@ -3,9 +3,11 @@ import { RentalsRepositoryInMemory } from "../repositories/in-memory/RentalsRepo
 import { CreateRentalUseCase } from "./CreateRentalUseCase"
 import dayjs from "dayjs"
 import { DayjsDateProvider } from "@shared/container/providers/DateProvider/implementations/dayjsDateProvider"
+import { CarsRepositoryInMemory } from "@modules/cars/repositories/in-memory/CarsRepositoryInMemory"
 
 let createRentalUseCase: CreateRentalUseCase
 let rentalsRepositoryInMemory: RentalsRepositoryInMemory
+let carsRepositoryInMemory: CarsRepositoryInMemory
 let dayjaDateProvider: DayjsDateProvider
 
 describe("Create Rentals", () => {
@@ -14,7 +16,8 @@ describe("Create Rentals", () => {
     rentalsRepositoryInMemory = new RentalsRepositoryInMemory()
     createRentalUseCase = new CreateRentalUseCase(
       rentalsRepositoryInMemory,
-      dayjaDateProvider
+      dayjaDateProvider,
+      carsRepositoryInMemory
     )
   })
   it("should be able to create a new rental", async () => {
