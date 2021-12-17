@@ -1,12 +1,6 @@
-// adicionar avatar na tabela de users
-// refatorar o usuario com coluna avatar
-// config upload multer
-// regra de negocio do upload
-// criar controller
-
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository"
 import { inject, injectable } from "tsyringe"
-import { deleteFile } from "utils/file"
+import { deleteFile } from "../../../../utils/file"
 
 interface IRequest {
   user_id: string
