@@ -1,5 +1,5 @@
 import { AppError } from "@shared/errors/AppError"
-import { RentalsRepositoryInMemory } from "../repositories/in-memory/RentalsRepositoryInMemory"
+import { RentalsRepositoryInMemory } from "../../repositories/in-memory/RentalsRepositoryInMemory"
 import { CreateRentalUseCase } from "./CreateRentalUseCase"
 import dayjs from "dayjs"
 import { DayjsDateProvider } from "@shared/container/providers/DateProvider/implementations/dayjsDateProvider"
