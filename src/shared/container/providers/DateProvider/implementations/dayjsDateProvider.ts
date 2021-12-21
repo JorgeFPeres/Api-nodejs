@@ -5,6 +5,9 @@ import utc from "dayjs/plugin/utc"
 dayjs.extend(utc)
 
 class DayjsDateProvider implements IDateProvider {
+  addDays(days: number): Date {
+    return dayjs().add(days, "days").toDate()
+  }
   dateNow(): Date {
     return dayjs().toDate()
   }
