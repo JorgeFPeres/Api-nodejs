@@ -3,15 +3,23 @@ import { ICreateUserDTO } from "@modules/accounts/dtos/ICreateUserDTO"
 import { UsersRepositoryInMemory } from "@modules/accounts/repositories/in-memory/UsersRepositoryInMemory"
 import { CreateUserUseCase } from "../createUser/CreateUserUseCase"
 import { AuthenticateUserUseCase } from "./AuthenticateUserUseCase"
+import { UsersTokensRepositoryInMemory } from "@modules/accounts/repositories/in-memory/UsersTokensRepositoyInMemory"
+import { DayjsDateProvider } from "@shared/container/providers/DateProvider/implementations/dayjsDateProvider"
 
 let authenticateUserUseCase: AuthenticateUserUseCase
 let usersRepositoryInMemory: UsersRepositoryInMemory
 let createUserUseCase: CreateUserUseCase
+let userTokensRepositoryInMemory: UsersTokensRepositoryInMemory
+let dateProvider: DayjsDateProvider
 describe("Authenticate User", () => {
   beforeEach(() => {
     usersRepositoryInMemory = new UsersRepositoryInMemory()
+    userTokensRepositoryInMemory = new UsersTokensRepositoryInMemory()
+    dateProvider = new DayjsDateProvider()
     authenticateUserUseCase = new AuthenticateUserUseCase(
-      usersRepositoryInMemory
+      usersRepositoryInMemory,
+      userTokensRepositoryInMemory,
+      dateProvider
     )
     createUserUseCase = new CreateUserUseCase(usersRepositoryInMemory)
   })
