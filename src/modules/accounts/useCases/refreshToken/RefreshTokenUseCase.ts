@@ -10,6 +10,10 @@ interface IPayLoad {
   email: string
   sub: string
 }
+interface ITokenRespomse {
+  token: string
+  refresh_token: string
+}
 
 @injectable()
 class RefreshTokenUseCase {
@@ -20,7 +24,7 @@ class RefreshTokenUseCase {
     private dateProvider: IDateProvider
   ) {}
 
-  async execute(token: string): Promise<string> {
+  async execute(token: string): Promise<ITokenRespomse> {
     const { sub, email } = verify(token, auth.secret_refresh_token) as IPayLoad
     const user_id = sub
 
@@ -38,13 +42,19 @@ class RefreshTokenUseCase {
       subject: sub,
       expiresIn: auth.expires_in_refresh_token,
     })
-    //#endregion
+
     await this.usersTokenRepository.create({
       expires_date: this.dateProvider.addDays(30),
       refresh_token,
       user_id,
     })
-    return refresh_token
+
+    const newToken = sign({}, auth.secret_token, {
+      subject: user_id,
+      expiresIn: auth.expires_in_token,
+    })
+
+    return { refresh_token, token: newToken }
   }
 }
 export { RefreshTokenUseCase }
